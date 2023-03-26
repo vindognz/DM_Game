@@ -1,5 +1,5 @@
 import pygame
-from simple_pid import *
+# from simple_pid import *
 import time
 
 window_width = 1000
@@ -25,10 +25,10 @@ vel = 5
 acceleration = 0.5
 gravity = 0.5
 
-set_point = 500 - player_size * 2
+# set_point = 500 - player_size * 2
 
 # PID tuning:
-pid = PID(0.035, 0, 0.01, setpoint=set_point)
+# pid = PID(0.035, 0, 0.01, setpoint=set_point)
 #pid = PID(0.005, 0, 0.005, setpoint=set_point)
 
 control = 0 # Manual
@@ -65,10 +65,10 @@ while run:
         control = 1
 
     # PID CONTROL
-    elif control == 1:
-        output = pid(position)
-        if output > 0:
-            acc_y = -output
+    # elif control == 1:
+    #     output = pid(position)
+    #     if output > 0:
+    #         acc_y = -output
 
 
 
