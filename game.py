@@ -1,6 +1,5 @@
 import pygame
 # from simple_pid import *
-import time
 
 window_width = 1000
 window_height = 1000
