@@ -20,8 +20,9 @@ all_sprites = pygame.sprite.Group([player])
 
 y, vel_y = player.rect.bottom, 0
 vel = 5
-acceleration = 0.5
+acceleration = 10
 gravity = 0.5
+inCollision = True
 
 platforms = []
 
@@ -39,8 +40,9 @@ while run:
 
     keys = pygame.key.get_pressed()  
 
-    if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
-            acc_y = -acceleration
+    if keys[pygame.K_SPACE] or keys[pygame.K_UP] and inCollision == True:
+        acc_y = -acceleration
+        inCollision = False
 
 
 
@@ -66,11 +68,12 @@ while run:
     window.fill((0, 0, 64))
     pygame.draw.rect(window, (255, 165, 0), (0, lava_y, window_width, 100))
 
-    incollision = True
+
 
     if player.rect.collidelistall(platforms):
         vel_y = -0.5
         acc_y = -0.5
+        inCollision = True
 
 
 
