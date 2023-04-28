@@ -4,7 +4,7 @@ window_width = 1000
 window_height = 1000
 
 pygame.init()
-window = pygame.display.set_mode((window_width, window_height))
+window = pygame.display.set_mode((window_width, window_height), pygame.RESIZABLE)
 clock = pygame.time.Clock()
 lava_y = window_height - 50
 
@@ -18,10 +18,12 @@ pygame.draw.circle(player.image, (255, 0, 0), (player_size, player_size), player
 player.rect = player.image.get_rect(center = (150, lava_y - player_size))
 all_sprites = pygame.sprite.Group([player])
 
+pygame.mouse.set_visible(0)
+
 y, vel_y = player.rect.bottom, 0
 vel = 5
 acceleration = 10
-gravity = 0.5
+gravity = 0.25
 inCollision = True
 
 platforms = []
@@ -44,7 +46,7 @@ while run:
         acc_y = -acceleration
         inCollision = False
 
-
+    
 
     player.rect.centerx = (player.rect.centerx + (keys[pygame.K_RIGHT] - keys[pygame.K_LEFT]) * vel) % window_width
     
@@ -65,8 +67,11 @@ while run:
 
     player.rect.bottom = round(y)
 
-    window.fill((0, 0, 64))
-    pygame.draw.rect(window, (255, 165, 0), (0, lava_y, window_width, 100))
+    sky_colour = 37, 150, 190
+    lava_colour = 255, 102, 0
+
+    window.fill((sky_colour))
+    pygame.draw.rect(window, (lava_colour), (0, lava_y, window_width, 100))
 
 
 
@@ -77,8 +82,14 @@ while run:
 
 
 
+    # MISC RANDOM LIGHT BLUE PLATFORM
+    create_rect(0, 250, 245, 450, starty - 300, 350, 50)
+
+    # MISC RANDOM TURQUOISE PLATFORM
+    create_rect(52, 235, 168, 300, starty - 150, 500, 50)
+
     # MISC RANDOM GREEN PLATFORM
-    create_rect(0, 255, 0, 100, 100, 500, 50)
+    create_rect(0, 255, 0, 150, starty, 650, 50)
 
     # START PLATFORM
     create_rect(0, 0, 255, 0, starty, 100, 50)
