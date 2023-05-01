@@ -74,6 +74,9 @@ while run:
     elif keys[pygame.K_2]:
          player_image = str(Path.cwd() / "images" / "player1.png")
          player.image = pygame.image.load(player_image).convert_alpha()
+    elif keys[pygame.K_3]:
+         player_image = str(Path.cwd() / "images" / "player2.png")
+         player.image = pygame.image.load(player_image).convert_alpha()
               
 
 
