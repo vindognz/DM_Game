@@ -43,6 +43,8 @@ inCollision = True
 
 platforms = []
 
+# make a random number for the platform outside of the loop then assign it to the rect during the loop to prevent it having a stroke.
+
 # Create rect function
 def create_rect(r, g, b, topleftx, toplefty, width, height):
         thisrect = pygame.draw.rect(window, (r, g, b), (topleftx, toplefty, width, height))
@@ -83,14 +85,15 @@ while run:
     
 
     # Back to start platform if you touch lava
-    if y > lava_y:
-        player.rect.centerx = startx
-        y = starty
-        vel_y = 0
-        acc_y = 0
+    # if y > lava_y:
+    #     player.rect.centerx = startx
+    #     y = starty
+    #     vel_y = 0
+    #     acc_y = 0
+    
 
 
-    # Something that makes everything work
+    # Something that breaks everything when disabled
     player.rect.bottom = round(y)
 
     # Colour definitions for easy changing
@@ -98,11 +101,21 @@ while run:
     lava_colour = 255, 102, 0
     sky_colour = 3, 198, 252
 
+    # Lava code
+    deadly = []
+    lava = pygame.draw.rect(window, (lava_colour), (0, lava_y, window_width, 100))
+    deadly.append(lava)
+
+    if player.rect.collidelistall(deadly):
+         player.rect.centerx = startx
+         y = starty
+         vel_y = 0
+         acc_y = 0
+
     # Fills bg with sky_colour
     window.fill((sky_colour))
 
-    # Draws lava
-    pygame.draw.rect(window, (lava_colour), (0, lava_y, window_width, 100))
+    
 
     
     # Checks for collision and stops movement if collision is true
@@ -133,10 +146,3 @@ while run:
 
 pygame.quit()
 exit() 
-
-
-'''
-NOTES
-When making moving platforms, make a random number for the platform outside of the loop then assign it to the rect during the loop to prevent it having a stroke.
-
-'''
