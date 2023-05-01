@@ -52,7 +52,6 @@ while run:
 
     # MANUAL CONTROL 
     if control == 0:
-        # In here I was trying to implement a one-jump system - removing the ability to fly. I failed.
         if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
             acc_y = -acceleration
         elif keys[pygame.K_DOWN]:
