@@ -16,13 +16,6 @@ lava_y = window_height - 50
 starty = window_height / 2
 startx = 50 - window_width
 
-# player = pygame.sprite.Sprite()
-# player.image = pygame.Surface((30, 30), pygame.SRCALPHA)
-# player_size = 15
-# pygame.draw.circle(player.image, (255, 0, 0), (player_size, player_size), player_size)
-# player.rect = player.image.get_rect(center = (150, lava_y - player_size))
-
-
 # Player related definitions
 player = pygame.sprite.Sprite()
 player_image = str(Path.cwd() / "images" / "player.png")
@@ -42,8 +35,6 @@ gravity = 0.25
 inCollision = True
 
 platforms = []
-
-# make a random number for the platform outside of the loop then assign it to the rect during the loop to prevent it having a stroke.
 
 # Create rect function
 def create_rect(r, g, b, topleftx, toplefty, width, height):
