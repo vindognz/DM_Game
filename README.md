@@ -1,5 +1,5 @@
 # DM_Game
 
-This is a simple 2D Platform Game coded in Python using Pygame.
+This is a simple 2D Game coded in Python using the Pygame Game Engine for my Digital Media class.
 
-This requires installing pygame, you can do this through pip: pip install pygame (this SHOULD be compatible with Linux, Windows and maybe Mac (idk))
+This project uses a module called Pygame. This can be install using pip: pip install pygame. And a module called pathlib which can also be installed using pip: pip install pathlib.
